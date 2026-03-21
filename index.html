@@ -1,0 +1,400 @@
+import React, { useState } from 'react';
+import { 
+  HeartPulse, 
+  PiggyBank, 
+  Stethoscope, 
+  ArrowRight, 
+  Activity, 
+  AlertCircle, 
+  CheckCircle2, 
+  User, 
+  Mail, 
+  Calculator, 
+  Smartphone, 
+  TrendingUp, 
+  Zap,
+  Hospital
+} from 'lucide-react';
+
+// --- DỮ LIỆU CÂU HỎI ---
+const questions = [
+  {
+    id: 1,
+    title: 'Hội chứng "Chi tiêu chữa lành"',
+    description: 'Sau một ngày dài mệt mỏi, bạn thường...',
+    options: [
+      { text: 'Đi ngủ cho khỏe', points: 0, icon: '😴' },
+      { text: 'Làm ly trà sữa full topping', points: 5, icon: '🧋' },
+      { text: 'Lướt app chốt đơn để "chữa lành" tâm hồn', points: 10, icon: '🛍️' }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Bẫy FOMO',
+    description: 'Thấy bạn bè đu trend mua món đồ hot hit mới nhất, bạn...',
+    options: [
+      { text: 'Kệ, không hợp gu', points: 0, icon: '🧘‍♀️' },
+      { text: 'Góp chung tiền mua xài thử', points: 5, icon: '🤝' },
+      { text: 'Rút ví mua ngay kẻo lỡ, thà đau ví còn hơn tối cổ!', points: 10, icon: '💸' }
+    ]
+  },
+  {
+    id: 3,
+    title: 'Hệ tư tưởng "Girl Math"',
+    description: 'Thấy món đồ 600k giảm còn 500k, bạn nghĩ gì?',
+    options: [
+      { text: 'Tiết kiệm được 100k', points: 0, icon: '🛡️' },
+      { text: 'Bỏ qua, không cần thiết', points: 5, icon: '🙅‍♀️' },
+      { text: 'Lời 100k, lấy 100k đó đi ăn!', points: 10, icon: '🤑' }
+    ]
+  }
+];
+
+export default function App() {
+  const [currentSheet, setCurrentSheet] = useState(1);
+  
+  // State Sheet 1: User Info
+  const [userInfo, setUserInfo] = useState({ name: '', email: '' });
+  
+  // State Sheet 2: Quiz
+  const [answers, setAnswers] = useState({});
+  const [showDiagnosis, setShowDiagnosis] = useState(false);
+  
+  // State Sheet 3: Income Calculator
+  const [income, setIncome] = useState('');
+
+  // --- LOGIC XỬ LÝ ---
+  const handleNextSheet = () => setCurrentSheet(prev => prev + 1);
+  const handlePrevSheet = () => setCurrentSheet(prev => prev - 1);
+
+  const totalScore = Object.values(answers).reduce((sum, points) => sum + points, 0);
+  const isQuizDone = Object.keys(answers).length === questions.length;
+
+  const formatVND = (value) => {
+    if (!value) return '0';
+    return new Intl.NumberFormat('vi-VN').format(value) + ' VNĐ';
+  };
+
+  const handleIncomeChange = (e) => {
+    // Chỉ lấy số
+    const val = e.target.value.replace(/\D/g, '');
+    setIncome(val);
+  };
+
+  // --- RENDER CÁC SHEET ---
+
+  // SHEET 1: QUẦY LỄ TÂN
+  const renderSheet1 = () => (
+    <div className="space-y-6 animate-fade-in">
+      <div className="bg-gradient-to-r from-pink-500 to-fuchsia-600 p-6 rounded-2xl text-white text-center shadow-md relative overflow-hidden">
+        <Hospital className="w-24 h-24 absolute -right-4 -bottom-4 opacity-20" />
+        <h2 className="text-2xl font-black mb-2 relative z-10 flex items-center justify-center gap-2">
+          <Stethoscope className="w-8 h-8" />
+          PHÒNG KHÁM TÀI CHÍNH:<br/>CHÀO BẠN MỚI!
+        </h2>
+      </div>
+      
+      <p className="text-gray-600 text-center font-medium px-4">
+        "Chào mừng bạn đến với vũ trụ bớt rỗng túi! Để bác sĩ AI kê đúng 'đơn thuốc' 50-30-20 cho bạn, hãy điền nhẹ vài thông tin cơ bản nhé."
+      </p>
+
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+            <User className="w-4 h-4 text-pink-500" /> Tên gọi thân thương của bạn là gì?
+          </label>
+          <input 
+            type="text" 
+            value={userInfo.name}
+            onChange={(e) => setUserInfo({...userInfo, name: e.target.value})}
+            placeholder="[ Nhập tên vào đây ]"
+            className="w-full p-4 bg-pink-50/50 border-2 border-pink-100 rounded-xl focus:outline-none focus:border-pink-500 transition-colors text-gray-800 font-medium"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+            <Mail className="w-4 h-4 text-pink-500" /> Email để thông báo "khỏi bệnh":
+          </label>
+          <input 
+            type="email" 
+            value={userInfo.email}
+            onChange={(e) => setUserInfo({...userInfo, email: e.target.value})}
+            placeholder="[ Nhập email vào đây ]"
+            className="w-full p-4 bg-pink-50/50 border-2 border-pink-100 rounded-xl focus:outline-none focus:border-pink-500 transition-colors text-gray-800 font-medium"
+          />
+        </div>
+      </div>
+
+      <button
+        onClick={handleNextSheet}
+        disabled={!userInfo.name || !userInfo.email}
+        className={`w-full py-4 rounded-xl font-bold text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2
+          ${(userInfo.name && userInfo.email) 
+            ? 'bg-gradient-to-r from-pink-500 to-fuchsia-600 hover:-translate-y-1 hover:shadow-xl' 
+            : 'bg-gray-300 cursor-not-allowed'}`}
+      >
+        👉 ĐIỀN XONG RỒI THÌ BẤM SANG SHEET 2!
+      </button>
+    </div>
+  );
+
+  // SHEET 2: BẮT MẠCH
+  const renderSheet2 = () => (
+    <div className="space-y-6 animate-fade-in">
+      <div className="text-center">
+        <div className="inline-block p-3 bg-pink-100 text-pink-600 rounded-full mb-3">
+          <HeartPulse className="w-8 h-8" />
+        </div>
+        <h2 className="text-xl font-black text-gray-800 uppercase">
+          Bắt mạch: Bạn có đang mắc hội chứng "Viêm màng túi"?
+        </h2>
+      </div>
+
+      <div className="space-y-6">
+        {questions.map((q, index) => (
+          <div key={q.id} className="bg-white border-2 border-pink-50 rounded-2xl p-4 shadow-sm">
+            <h3 className="font-bold text-gray-800 mb-1">Câu {index + 1}: {q.title}</h3>
+            <p className="text-sm text-gray-500 mb-3">{q.description}</p>
+            <div className="space-y-2">
+              {q.options.map((opt, i) => (
+                <label key={i} className={`flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all
+                  ${answers[q.id] === opt.points ? 'border-pink-500 bg-pink-50' : 'border-gray-100 hover:bg-gray-50'}`}>
+                  <input 
+                    type="radio" 
+                    name={`q${q.id}`} 
+                    className="w-4 h-4 text-pink-500 focus:ring-pink-500"
+                    checked={answers[q.id] === opt.points}
+                    onChange={() => setAnswers({...answers, [q.id]: opt.points})}
+                  />
+                  <span className="text-xl">{opt.icon}</span>
+                  <span className={`text-sm font-medium ${answers[q.id] === opt.points ? 'text-pink-700' : 'text-gray-700'}`}>
+                    {opt.text}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {showDiagnosis ? (
+        <div className={`p-6 rounded-2xl text-center animate-fade-in border-2 ${totalScore > 10 ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'}`}>
+          {totalScore > 10 ? (
+            <>
+              <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-2 animate-bounce" />
+              <h3 className="font-black text-red-600 text-lg mb-1">Mức độ nặng: Báo động đỏ! 🚨</h3>
+              <p className="text-sm text-red-800">Túi bạn sắp thủng vì mua sắm cảm xúc rồi. Sang ngay Sheet 3 nhận thuốc!</p>
+            </>
+          ) : (
+            <>
+              <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-2" />
+              <h3 className="font-black text-green-600 text-lg mb-1">Mức độ nhẹ: Mạch đập ổn định! 💚</h3>
+              <p className="text-sm text-green-800">Chúc mừng {userInfo.name}! Bạn kiểm soát khá tốt, nhưng cứ nhận bí kíp ở Sheet 3 cho chắc nhé!</p>
+            </>
+          )}
+          <button
+            onClick={handleNextSheet}
+            className="mt-4 w-full py-3 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-md hover:-translate-y-1 transition-transform"
+          >
+            SANG SHEET 3 NHẬN THUỐC <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
+      ) : (
+        <button
+          onClick={() => setShowDiagnosis(true)}
+          disabled={!isQuizDone}
+          className={`w-full py-4 rounded-xl font-bold text-white shadow-lg transition-all flex items-center justify-center gap-2
+            ${isQuizDone ? 'bg-gradient-to-r from-pink-500 to-fuchsia-600 hover:-translate-y-1' : 'bg-gray-300 cursor-not-allowed'}`}
+        >
+          XEM KẾT QUẢ BẮT MẠCH <Activity className="w-5 h-5" />
+        </button>
+      )}
+    </div>
+  );
+
+  // SHEET 3: KÊ TOA 50-30-20
+  const renderSheet3 = () => {
+    const numericIncome = parseInt(income || '0', 10);
+    const essential = numericIncome * 0.5;
+    const personal = numericIncome * 0.3;
+    const savings = numericIncome * 0.2;
+
+    return (
+      <div className="space-y-6 animate-fade-in">
+        <div className="bg-gradient-to-r from-pink-500 to-fuchsia-600 p-6 rounded-2xl text-white text-center shadow-md">
+          <Calculator className="w-12 h-12 mx-auto mb-2 opacity-90" />
+          <h2 className="text-xl font-black mb-1">💊 PHÁC ĐỒ 50-30-20</h2>
+          <p className="text-pink-100 text-sm">Chia lương như chia bánh</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-2 text-center">
+            💰 Tổng Thu Nhập Tháng Này Của Bạn:
+          </label>
+          <div className="relative">
+            <input 
+              type="text" 
+              value={formatVND(income).replace(' VNĐ', '')}
+              onChange={handleIncomeChange}
+              placeholder="Nhập số tiền..."
+              className="w-full p-4 text-center text-2xl font-black bg-white border-2 border-pink-200 rounded-xl focus:outline-none focus:border-pink-500 text-pink-600"
+            />
+            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 font-bold">VNĐ</span>
+          </div>
+        </div>
+
+        {numericIncome > 0 && (
+          <div className="space-y-3 animate-fade-in">
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-xl">
+              <div className="flex justify-between items-center mb-1">
+                <span className="font-bold text-blue-800">50% Nhu cầu thiết yếu</span>
+                <span className="font-black text-blue-600">{formatVND(essential)}</span>
+              </div>
+              <p className="text-xs text-blue-600/80">Tiền nhà, điện, nước, ăn uống cơ bản.</p>
+            </div>
+
+            <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded-r-xl">
+              <div className="flex justify-between items-center mb-1">
+                <span className="font-bold text-orange-800">30% Chi tiêu cá nhân</span>
+                <span className="font-black text-orange-600">{formatVND(personal)}</span>
+              </div>
+              <p className="text-xs text-orange-600/80">Shopping, cà phê, xem phim, "chữa lành".</p>
+            </div>
+
+            <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-xl">
+              <div className="flex justify-between items-center mb-1">
+                <span className="font-bold text-green-800">20% Tiết kiệm & Đầu tư</span>
+                <span className="font-black text-green-600">{formatVND(savings)}</span>
+              </div>
+              <p className="text-xs text-green-600/80">Quỹ phòng thân, đầu tư sinh lời.</p>
+            </div>
+
+            <div className="bg-pink-100 p-4 rounded-xl text-center mt-6 relative">
+              <PiggyBank className="w-8 h-8 text-pink-500 absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white rounded-full p-1" />
+              <p className="text-sm text-pink-800 font-medium italic mt-2">
+                "Biết chia tiền là tốt, nhưng để làm theo mới khó. Đừng lo, hãy sang Sheet 4 để xem cách MoMo giúp bạn rảnh tay!"
+              </p>
+            </div>
+            
+            <button
+              onClick={handleNextSheet}
+              className="w-full mt-4 py-4 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:-translate-y-1 transition-transform"
+            >
+              SANG SHEET 4: XEM BÍ KÍP <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // SHEET 4: LỘ TRÌNH HÀNH ĐỘNG
+  const renderSheet4 = () => (
+    <div className="space-y-6 animate-fade-in">
+      <div className="text-center mb-6">
+        <Smartphone className="w-12 h-12 text-pink-500 mx-auto mb-2" />
+        <h2 className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-fuchsia-600 uppercase">
+          🤖 ĐỒNG BỘ "NÃO BỘ" VỚI TRỢ THỦ AI MOMO
+        </h2>
+        <p className="text-sm text-gray-500 mt-2">Biến lý thuyết thành hành động chỉ với vài chạm!</p>
+      </div>
+
+      <div className="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-pink-200 before:to-transparent">
+        
+        {/* Step 1 */}
+        <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-pink-100 text-pink-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+            1
+          </div>
+          <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="font-bold text-pink-600 mb-1 flex items-center gap-2">
+              <Zap className="w-4 h-4" /> Quản lý chi tiêu tự động
+            </h3>
+            <p className="text-xs text-gray-600">Việc ghi chép Excel rất dễ nản. Mở app quản lý chi tiêu bằng AI tự động trên MoMo (MONI) để hệ thống tự phân loại giao dịch giúp bạn.</p>
+          </div>
+        </div>
+
+        {/* Step 2 */}
+        <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-pink-100 text-pink-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+            2
+          </div>
+          <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="font-bold text-pink-600 mb-1 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4" /> Xử gọn 50% Thiết yếu
+            </h3>
+            <p className="text-xs text-gray-600">Cài đặt tính năng thanh toán hóa đơn tự động qua trợ lý MONI. Không bao giờ sợ quên deadline điện/nước nữa.</p>
+          </div>
+        </div>
+
+        {/* Step 3 */}
+        <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-pink-100 text-pink-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+            3
+          </div>
+          <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="font-bold text-pink-600 mb-1 flex items-center gap-2">
+              <TrendingUp className="w-4 h-4" /> Khởi động 20% Đầu tư
+            </h3>
+            <p className="text-xs text-gray-600">Micro-investing: Dùng số tiền lẻ từ 10.000đ nạp vào Túi Thần Tài MoMo. Hoặc "thuê chuyên gia" bằng cách đầu tư chứng chỉ quỹ (Dragon Capital, VCBF).</p>
+          </div>
+        </div>
+      </div>
+
+      <button
+        onClick={() => alert(`Cảm ơn ${userInfo.name}!\nHãy mở app MoMo và bắt đầu trải nghiệm ngay nhé!`)}
+        className="w-full py-4 mt-6 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white rounded-xl font-black text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all animate-pulse"
+      >
+        MỞ APP MOMO VÀ VÀO VIỆC NGAY! 🚀
+      </button>
+      
+      <button 
+        onClick={() => setCurrentSheet(1)}
+        className="w-full text-center text-sm text-gray-400 hover:text-pink-500 font-medium mt-4"
+      >
+        Làm lại từ đầu
+      </button>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-pink-50/50 font-sans flex items-center justify-center p-4">
+      <div className="max-w-md w-full">
+        
+        {/* Progress Bar Header */}
+        <div className="flex justify-between items-center mb-6 px-4">
+          {[1, 2, 3, 4].map((step) => (
+            <div key={step} className="flex flex-col items-center relative z-10">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-300 ${
+                currentSheet >= step 
+                  ? 'bg-pink-500 text-white shadow-md' 
+                  : 'bg-white text-gray-300 border-2 border-gray-200'
+              }`}>
+                {step}
+              </div>
+              <span className={`text-[10px] mt-1 font-bold ${currentSheet >= step ? 'text-pink-600' : 'text-gray-400'}`}>
+                Sheet {step}
+              </span>
+            </div>
+          ))}
+          {/* Connecting Line */}
+          <div className="absolute top-8 left-0 w-full h-0.5 bg-gray-200 -z-0">
+            <div 
+              className="h-full bg-pink-500 transition-all duration-500 ease-in-out" 
+              style={{ width: `${((currentSheet - 1) / 3) * 100}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Main Card Content */}
+        <div className="bg-white rounded-3xl shadow-xl p-6 relative overflow-hidden">
+          {currentSheet === 1 && renderSheet1()}
+          {currentSheet === 2 && renderSheet2()}
+          {currentSheet === 3 && renderSheet3()}
+          {currentSheet === 4 && renderSheet4()}
+        </div>
+
+      </div>
+    </div>
+  );
+}
