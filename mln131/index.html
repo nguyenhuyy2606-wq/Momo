@@ -80,7 +80,13 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .chip.mid{background:var(--gold-soft);color:var(--gold)}
 .chip.good{background:var(--ok-soft);color:var(--ok)}
 
-.foot{margin-top:28px;color:var(--muted);font-size:13px;display:grid;gap:8px}
+.syncbox{margin-top:24px;display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;font-size:14px}
+.ok-t{color:var(--ok)} .bad-t{color:var(--bad)}
+.code{width:100%;min-height:84px;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--bg);color:var(--ink);word-break:break-all}
+.hint{color:var(--muted);font-size:12.5px}
+#codeArea{display:grid;gap:8px}
+#codeArea:empty{display:none}
+.foot{margin-top:20px;color:var(--muted);font-size:13px;display:grid;gap:8px}
 .link{background:none;border:0;padding:0;color:var(--red);text-decoration:underline;font-size:13px}
 
 /* chapter */
@@ -741,9 +747,70 @@ CH.forEach(function(c){
 
 /* ===================== LƯU TIẾN ĐỘ ===================== */
 var KEY="mln131.v1";
-var S={best:{},last:{},wrong:{},cards:{},exams:[]};
-try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); for(var k in S) if(o&&o[k]!=null) S[k]=o[k];}}catch(e){}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function blank(){return {best:{},last:{},wrong:{},cards:{},exams:[],t:0};}
+function norm(o){var b=blank(); if(o&&typeof o==="object") for(var k in b) if(o[k]!=null) b[k]=o[k]; return b;}
+var S=blank();
+try{var raw=localStorage.getItem(KEY); if(raw) S=norm(JSON.parse(raw));}catch(e){}
+function saveLocal(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function save(){S.t=Date.now(); saveLocal(); pushRemote();}
+
+/* Gộp tiến độ của hai máy: điểm cao nhất lấy max, thẻ đã nhớ và lượt thi gộp lại,
+   còn điểm gần nhất và danh sách câu sai lấy theo bản mới hơn. */
+function merge(a,b){
+  var n=a.t>=b.t?a:b, o=n===a?b:a, m=norm(JSON.parse(JSON.stringify(n)));
+  for(var k in o.best) m.best[k]=Math.max(m.best[k]||0,o.best[k]);
+  for(var k2 in o.last) if(m.last[k2]==null) m.last[k2]=o.last[k2];
+  for(var k3 in o.cards) m.cards[k3]=1;
+  if(!o.t) for(var k4 in o.wrong) m.wrong[k4]=1;
+  var seen={}; m.exams=m.exams.concat(o.exams).filter(function(x){var id=x.d+"|"+x.score+"|"+x.n; if(seen[id])return false; seen[id]=1; return true;}).slice(-30);
+  m.t=Math.max(a.t||0,b.t||0);
+  return m;
+}
+
+/* Đồng bộ qua tài khoản Claude (chỉ có khi mở bằng link claude.ai và đã đăng nhập) */
+var remote=null, pushTimer=null, sync="local";
+function pushRemote(){
+  if(!remote) return; clearTimeout(pushTimer);
+  pushTimer=setTimeout(function(){
+    remote.set({state:JSON.stringify(S),t:S.t}).then(function(){setSync("on");},function(){setSync("err");});
+  },700);
+}
+function setSync(v){sync=v; var el=document.getElementById("syncNote"); if(el) el.innerHTML=syncText();}
+function syncText(){
+  if(sync==="on") return '<b class="ok-t">● Đang đồng bộ</b> theo tài khoản Claude. Mở link này trên máy khác (cùng tài khoản) sẽ thấy cùng tiến độ.';
+  if(sync==="wait") return '<b>● Đang kết nối đồng bộ…</b>';
+  if(sync==="err") return '<b class="bad-t">● Chưa lưu được lên tài khoản</b>. Tiến độ vẫn được giữ trên máy này và sẽ thử lại ở lần lưu sau.';
+  return '<b>● Chỉ lưu trên máy này.</b> Muốn chuyển sang máy khác, dùng mã tiến độ bên dưới, hoặc mở bằng link claude.ai để tự đồng bộ.';
+}
+(function initSync(){
+  if(!window.claude||typeof window.claude.use!=="function") return;
+  sync="wait";
+  Promise.all([window.claude.use("db"),window.claude.use("user")]).then(function(r){
+    var db=r[0], user=r[1];
+    if(!db||!user){setSync("local");return;}
+    return user.id().then(function(id){
+      if(!id){setSync("local");return;}
+      var ref=db.collection("data/users/"+id).doc("progress"), first=true;
+      ref.onSnapshot(function(snap){
+        if(snap.metadata&&snap.metadata.hasPendingWrites) return;
+        var r2=null;
+        if(snap.exists){try{r2=norm(JSON.parse(snap.data().state));}catch(e){r2=null;}}
+        var wasFirst=first; first=false; remote=ref;
+        if(r2){
+          var m=merge(S,r2), changed=JSON.stringify(m)!==JSON.stringify(S);
+          S=m; saveLocal();
+          if(wasFirst&&JSON.stringify(m)!==JSON.stringify(r2)) pushRemote();
+          if(changed&&(view.name==="home"||view.name==="chapter")) render();
+        } else if(wasFirst&&S.t+Object.keys(S.best).length) { if(!S.t) S.t=Date.now(); pushRemote(); }
+        setSync("on");
+      },function(){setSync("err");});
+    });
+  }).catch(function(){setSync("local");});
+})();
+
+/* Mã tiến độ: chép tay giữa các máy khi không có đồng bộ tự động */
+function exportCode(){return btoa(unescape(encodeURIComponent(JSON.stringify(S))));}
+function importCode(code){var o=JSON.parse(decodeURIComponent(escape(atob(code.trim())))); S=merge(S,norm(o)); S.t=Date.now(); saveLocal(); pushRemote();}
 
 var ALL=[]; CH.forEach(function(c){c.qs.forEach(function(q,i){ALL.push({id:c.id+"-"+i,ch:c,q:q[0],o:q[1],a:q[2],e:q[3],sec:c.qtag[i]});});});
 var BYID={}; ALL.forEach(function(x){BYID[x.id]=x;});
@@ -796,15 +863,33 @@ function renderHome(){
     h+='<button class="ch" data-ch="'+c.id+'"><span class="no">'+c.n+'</span><span class="nm">'+esc(c.t)+'</span><span class="chip '+st[1]+'">'+st[0]+'</span>'+
        '<span class="meta"><span class="track"><i style="width:'+(p||0)+'%"></i></span><span class="pct">'+(p==null?"–":p+"%")+'</span></span></button>';
   });
-  h+='</div><div class="foot"><span>Nội dung soạn theo Giáo trình Chủ nghĩa xã hội khoa học (Bộ GD&amp;ĐT). Nên đối chiếu với slide hoặc đề cương của lớp. Tiến độ chỉ lưu trên trình duyệt này.</span>'+
+  h+='</div><div class="syncbox"><div id="syncNote">'+syncText()+'</div>'+
+     '<div class="row"><button class="btn" id="expBtn">Sao chép mã tiến độ</button><button class="btn" id="impBtn">Nhập mã từ máy khác</button></div>'+
+     '<div id="codeArea"></div></div>'+
+     '<div class="foot"><span>Nội dung soạn theo Giáo trình Chủ nghĩa xã hội khoa học (Bộ GD&amp;ĐT). Nên đối chiếu với slide hoặc đề cương của lớp.</span>'+
      '<span class="confirm" id="resetBox"><button class="link" id="resetBtn">Xóa toàn bộ tiến độ</button></span></div>';
   app.innerHTML=h;
   app.querySelectorAll(".ch").forEach(function(b){b.onclick=function(){go({name:"chapter",ch:CH.find(function(c){return c.id===b.dataset.ch;}),tab:"sum"});};});
   document.getElementById("goExam").onclick=function(){go({name:"examSetup",from:{name:"home"}});};
   document.getElementById("goWrong").onclick=function(){startPractice(wrongList(),"Ôn câu hay sai",null,true,{name:"home"});};
+  document.getElementById("expBtn").onclick=function(){
+    var code=exportCode(), area=document.getElementById("codeArea");
+    area.innerHTML='<textarea id="codeOut" class="code" readonly></textarea><small class="hint" id="cpMsg">Gửi mã này sang máy kia (Zalo, Messenger…), rồi bấm “Nhập mã từ máy khác” ở máy đó.</small>';
+    var ta=document.getElementById("codeOut"); ta.value=code;
+    try{navigator.clipboard.writeText(code).then(function(){document.getElementById("cpMsg").textContent="Đã sao chép mã. Gửi sang máy kia rồi bấm “Nhập mã từ máy khác” ở máy đó.";},function(){ta.select();});}catch(e){ta.select();}
+  };
+  document.getElementById("impBtn").onclick=function(){
+    var area=document.getElementById("codeArea");
+    area.innerHTML='<textarea id="codeIn" class="code" placeholder="Dán mã tiến độ vào đây"></textarea><div class="row"><button class="btn red" id="impGo">Nhập tiến độ</button></div><small class="hint" id="impMsg"></small>';
+    document.getElementById("impGo").onclick=function(){
+      var v=document.getElementById("codeIn").value;
+      try{ if(!v.trim()) throw 0; importCode(v); renderHome(); }
+      catch(e){ document.getElementById("impMsg").textContent="Mã không hợp lệ. Hãy dán đúng toàn bộ mã đã sao chép từ máy kia."; }
+    };
+  };
   document.getElementById("resetBtn").onclick=function(){
     document.getElementById("resetBox").innerHTML='<span>Xóa hết điểm, câu sai và thẻ đã nhớ?</span><button class="btn bad" id="rsY">Xóa</button><button class="btn" id="rsN">Hủy</button>';
-    document.getElementById("rsY").onclick=function(){S={best:{},last:{},wrong:{},cards:{},exams:[]};save();renderHome();};
+    document.getElementById("rsY").onclick=function(){S=blank();save();renderHome();};
     document.getElementById("rsN").onclick=renderHome;
   };
 }
