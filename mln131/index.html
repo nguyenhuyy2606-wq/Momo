@@ -135,6 +135,15 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .expl.no{border-left-color:var(--bad)}
 .expl b{display:block;margin-bottom:2px}
 .navrow{display:flex;gap:10px;margin-top:14px}
+.know{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px}
+.know summary{cursor:pointer;padding:10px 12px;font-weight:600;color:var(--red)}
+.know ul{margin:0;padding:0 14px 10px 30px;display:grid;gap:5px}
+.know li b{color:var(--red)}
+.know .tip{margin:0 12px 12px}
+.seclist{display:grid;gap:8px}
+.secbtn{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-weight:600}
+.secbtn:hover{border-color:var(--red)}
+.secbtn small{color:var(--muted);font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
 .progress{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:14px}
 .progress i{display:block;height:100%;background:var(--red)}
 
@@ -198,6 +207,8 @@ var CH = [
    {h:"Vai trò của Mác và Ăngghen", p:[
     "Chuyển từ lập trường dân chủ cách mạng sang lập trường giai cấp công nhân (thể hiện trên Niên giám Pháp – Đức, 1844).",
     "<b>Ba phát kiến vĩ đại:</b> (1) chủ nghĩa duy vật lịch sử; (2) học thuyết giá trị thặng dư; (3) học thuyết về sứ mệnh lịch sử toàn thế giới của giai cấp công nhân.",
+    "<b>Vai trò từng phát kiến:</b> CN duy vật lịch sử luận chứng về mặt <b>triết học</b> sự sụp đổ của CNTB và thắng lợi của CNXH đều tất yếu; học thuyết giá trị thặng dư luận chứng về mặt <b>kinh tế</b> sự diệt vong không tránh khỏi của CNTB; học thuyết sứ mệnh lịch sử của GCCN khắc phục triệt để hạn chế của CNXH không tưởng (chỉ ra lực lượng thực hiện).",
+    "Mác – Ăngghen kế thừa <b>hạt nhân hợp lý</b> (phép biện chứng) của Hêghen và chủ nghĩa duy vật của Phoiơbắc, đồng thời khắc phục chủ nghĩa duy tâm của Hêghen và tính siêu hình của Phoiơbắc.",
     "<b>Tuyên ngôn của Đảng Cộng sản (2/1848)</b> đánh dấu sự ra đời của CNXHKH, là cương lĩnh chính trị đầu tiên của phong trào cộng sản quốc tế. Kết thúc bằng khẩu hiệu “Vô sản tất cả các nước, đoàn kết lại!”."],
     tip:"Ăngghen đánh giá: nhờ HAI phát kiến (quan niệm duy vật lịch sử và học thuyết giá trị thặng dư) mà CNXH từ không tưởng trở thành khoa học."},
    {h:"Các giai đoạn phát triển", p:[
@@ -249,7 +260,9 @@ var CH = [
   sum:[
    {h:"Khái niệm giai cấp công nhân", p:[
     "Xác định trên <b>hai phương diện</b>: <b>kinh tế – xã hội</b> (người lao động trực tiếp hay gián tiếp vận hành công cụ sản xuất có tính chất công nghiệp ngày càng hiện đại, xã hội hóa cao) và <b>chính trị – xã hội</b> (trong CNTB: không có tư liệu sản xuất, phải bán sức lao động, bị bóc lột giá trị thặng dư).",
-    "GCCN là “sản phẩm của bản thân nền đại công nghiệp” (Tuyên ngôn)."]},
+    "GCCN là “sản phẩm của bản thân nền đại công nghiệp” (Tuyên ngôn).",
+    "Tuyên ngôn: “bước thứ nhất trong cuộc cách mạng công nhân là giai cấp vô sản biến thành giai cấp thống trị, là giành lấy dân chủ”.",
+    "GCCN hiện nay có xu hướng <b>trí thức hóa</b> (xuất hiện “công nhân tri thức”), vẫn là lực lượng sản xuất hàng đầu; sứ mệnh lịch sử của GCCN không thay đổi."]},
    {h:"Nội dung sứ mệnh lịch sử", p:[
     "<b>Kinh tế:</b> là nhân tố hàng đầu của lực lượng sản xuất xã hội hóa cao; đại biểu cho quan hệ sản xuất mới dựa trên chế độ công hữu về tư liệu sản xuất chủ yếu.",
     "<b>Chính trị – xã hội:</b> cùng nhân dân lao động, dưới sự lãnh đạo của ĐCS, lật đổ quyền thống trị của giai cấp tư sản, giành chính quyền, thiết lập nhà nước kiểu mới.",
@@ -323,9 +336,11 @@ var CH = [
     "<b>Đặc điểm:</b> kinh tế nhiều thành phần (Lênin nêu 5 thành phần ở Nga); chính trị: thiết lập, tăng cường chuyên chính vô sản; tư tưởng – văn hóa: còn nhiều tư tưởng khác nhau; xã hội: còn nhiều giai cấp, tầng lớp.",
     "Thực chất là thời kỳ cải biến cách mạng sâu sắc, triệt để trên tất cả các lĩnh vực, đấu tranh giai cấp giữa cái cũ và cái mới."]},
    {h:"Quá độ lên CNXH ở Việt Nam", p:[
+    "Việt Nam quá độ lên CNXH từ một xã hội vốn là <b>thuộc địa, nửa phong kiến</b>, lực lượng sản xuất rất thấp, chiến tranh kéo dài.",
     "<b>Bỏ qua chế độ TBCN</b> (Đại hội IX, 2001): bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng TBCN, nhưng tiếp thu, kế thừa những thành tựu nhân loại đạt được dưới CNTB, nhất là khoa học, công nghệ.",
     "<b>Cương lĩnh 2011</b> (bổ sung, phát triển, Đại hội XI) nêu <b>8 đặc trưng</b> (Cương lĩnh 1991 có 6): dân giàu, nước mạnh, dân chủ, công bằng, văn minh; do nhân dân làm chủ; kinh tế phát triển cao dựa trên LLSX hiện đại và QHSX tiến bộ phù hợp; văn hóa tiên tiến, đậm đà bản sắc dân tộc; con người ấm no, tự do, hạnh phúc, phát triển toàn diện; các dân tộc bình đẳng, đoàn kết, tôn trọng và giúp nhau cùng phát triển; Nhà nước pháp quyền XHCN của nhân dân, do nhân dân, vì nhân dân do ĐCS lãnh đạo; quan hệ hữu nghị, hợp tác với các nước.",
-    "Cương lĩnh 2011 nêu <b>8 phương hướng</b> cơ bản xây dựng CNXH.",
+    "Cương lĩnh 2011 nêu <b>8 phương hướng</b>: (1) đẩy mạnh CNH, HĐH gắn với phát triển kinh tế tri thức, bảo vệ tài nguyên, môi trường; (2) phát triển kinh tế thị trường định hướng XHCN; (3) xây dựng nền văn hóa tiên tiến, đậm đà bản sắc dân tộc, xây dựng con người, thực hiện tiến bộ và công bằng xã hội; (4) bảo đảm vững chắc quốc phòng, an ninh; (5) đường lối đối ngoại độc lập, tự chủ, hòa bình, hữu nghị, hợp tác, chủ động và tích cực hội nhập quốc tế; (6) xây dựng nền dân chủ XHCN, đại đoàn kết toàn dân tộc; (7) xây dựng Nhà nước pháp quyền XHCN; (8) xây dựng Đảng trong sạch, vững mạnh.",
+    "Mô hình kinh tế tổng quát trong thời kỳ quá độ ở Việt Nam: <b>kinh tế thị trường định hướng xã hội chủ nghĩa</b>.",
     "<b>Đại hội XIII:</b> đến 2030 là nước đang phát triển có công nghiệp hiện đại, thu nhập trung bình cao; đến 2045 trở thành nước phát triển, thu nhập cao."],
     tip:"Thứ tự đúng của mục tiêu: dân giàu, nước mạnh, dân chủ, công bằng, văn minh. “Dân chủ” đứng trước “công bằng”."}
   ],
@@ -367,7 +382,8 @@ var CH = [
     "Thuật ngữ xuất hiện khoảng thế kỷ VII–VI TCN ở Hy Lạp cổ đại: <b>demos</b> (nhân dân) + <b>kratos</b> (cai trị, quyền lực), tức quyền lực thuộc về nhân dân.",
     "Theo Mác – Lênin, dân chủ có ba phương diện: (1) <b>giá trị xã hội</b>: quyền lực thuộc về nhân dân, nhân dân là chủ; (2) <b>phạm trù chính trị</b>: một hình thức hay hình thái nhà nước, một chế độ chính trị; (3) <b>nguyên tắc</b> tổ chức và hoạt động (tập trung dân chủ).",
     "Dân chủ với tư cách <b>hình thức nhà nước</b> là phạm trù lịch sử; với tư cách <b>giá trị xã hội</b> là phạm trù vĩnh viễn.",
-    "Lịch sử có <b>ba nền dân chủ</b>: chủ nô, tư sản, XHCN. Thời phong kiến không có nền dân chủ (chế độ chuyên chế)."],
+    "Lịch sử có <b>ba nền dân chủ</b>: chủ nô, tư sản, XHCN. Thời phong kiến không có nền dân chủ (chế độ chuyên chế).",
+    "<b>Dân chủ tư sản</b> là bước tiến lớn so với chuyên chế phong kiến nhưng dựa trên chế độ tư hữu về tư liệu sản xuất, nên về bản chất là dân chủ của thiểu số giai cấp tư sản."],
     tip:"Dân chủ chủ nô là nền dân chủ đầu tiên, nhưng chỉ dành cho chủ nô và công dân tự do, không dành cho nô lệ."},
    {h:"Dân chủ xã hội chủ nghĩa", p:[
     "Phôi thai từ <b>Công xã Pari (1871)</b>; chính thức xác lập từ <b>Cách mạng Tháng Mười Nga (1917)</b>.",
@@ -382,7 +398,9 @@ var CH = [
     "Phương châm: Đại hội VI (1986): “Dân biết, dân bàn, dân làm, dân kiểm tra”. Đại hội XIII bổ sung: “… <b>dân giám sát, dân thụ hưởng</b>”.",
     "Khái niệm “Nhà nước pháp quyền XHCN” lần đầu được nêu tại <b>Hội nghị đại biểu toàn quốc giữa nhiệm kỳ khóa VII (1994)</b>.",
     "<b>Đặc điểm nhà nước pháp quyền XHCN Việt Nam:</b> của nhân dân, do nhân dân, vì nhân dân; quyền lực nhà nước là <b>thống nhất, có sự phân công, phối hợp, kiểm soát</b> giữa các cơ quan trong thực hiện quyền lập pháp, hành pháp, tư pháp; Hiến pháp và pháp luật giữ vị trí tối thượng; tôn trọng quyền con người; do ĐCS lãnh đạo; tổ chức theo nguyên tắc tập trung dân chủ.",
-    "Hai hình thức dân chủ: <b>trực tiếp</b> và <b>gián tiếp</b> (đại diện, thông qua Quốc hội, HĐND)."],
+    "Hai hình thức dân chủ: <b>trực tiếp</b> và <b>gián tiếp</b> (đại diện, thông qua Quốc hội, HĐND).",
+    "<b>Quốc hội</b> là cơ quan đại biểu cao nhất của nhân dân, cơ quan quyền lực nhà nước cao nhất.",
+    "<b>Hiến pháp 2013 (Điều 2):</b> Nhà nước CHXHCN Việt Nam là nhà nước pháp quyền XHCN của nhân dân, do nhân dân, vì nhân dân; tất cả quyền lực nhà nước thuộc về nhân dân mà nền tảng là liên minh giữa giai cấp công nhân với giai cấp nông dân và đội ngũ trí thức."],
     tip:"Việt Nam KHÔNG theo “tam quyền phân lập”. Đáp án đúng là “thống nhất, có phân công, phối hợp, kiểm soát”."}
   ],
   cards:[
@@ -423,13 +441,14 @@ var CH = [
     "<b>Cơ cấu xã hội – giai cấp:</b> hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định, thông qua quan hệ sở hữu tư liệu sản xuất, tổ chức quản lý quá trình sản xuất, địa vị chính trị – xã hội."]},
    {h:"Sự biến đổi có tính quy luật trong thời kỳ quá độ", p:[
     "Gắn liền và bị quy định bởi <b>cơ cấu kinh tế</b>.",
-    "Biến đổi phức tạp, đa dạng, làm xuất hiện các tầng lớp xã hội mới.",
+    "Biến đổi phức tạp, đa dạng, làm xuất hiện các tầng lớp xã hội mới (do tồn tại nền kinh tế nhiều thành phần).",
     "Biến đổi trong mối quan hệ <b>vừa đấu tranh, vừa liên minh</b>, từng bước xóa bỏ bất bình đẳng xã hội, dẫn đến sự xích lại gần nhau.",
     "Giai cấp công nhân giữ vai trò lãnh đạo."]},
    {h:"Liên minh giai cấp, tầng lớp", p:[
     "<b>Tính tất yếu về chính trị:</b> Lênin: GCCN không thể giữ vững chính quyền nếu không liên minh với nông dân và quần chúng lao động.",
     "<b>Tính tất yếu về kinh tế:</b> đáp ứng nhu cầu, lợi ích kinh tế của các giai cấp, tầng lớp; gắn công nghiệp, nông nghiệp và khoa học – công nghệ.",
-    "<b>Nội dung:</b> kinh tế (<b>cơ bản nhất, quyết định</b>), chính trị, văn hóa – xã hội."],
+    "<b>Nội dung:</b> kinh tế (<b>cơ bản nhất, quyết định</b>), chính trị, văn hóa – xã hội.",
+    "<b>Kinh tế:</b> thỏa mãn nhu cầu, lợi ích kinh tế của các giai cấp, tầng lớp; xây dựng cơ cấu kinh tế hợp lý, gắn công nghiệp – nông nghiệp – khoa học, công nghệ. <b>Chính trị:</b> giữ vững lập trường chính trị – tư tưởng của GCCN, vai trò lãnh đạo của Đảng, xây dựng Nhà nước pháp quyền XHCN. <b>Văn hóa – xã hội:</b> xây dựng nền văn hóa tiên tiến, đậm đà bản sắc dân tộc, nâng cao dân trí, xóa đói giảm nghèo, thực hiện tốt chính sách xã hội."],
     tip:"Nội dung cơ bản nhất của liên minh là KINH TẾ, không phải chính trị."},
    {h:"Ở Việt Nam", p:[
     "Liên minh giữa <b>giai cấp công nhân, giai cấp nông dân và đội ngũ trí thức</b> do ĐCS lãnh đạo là nền tảng của khối đại đoàn kết toàn dân tộc và nền tảng chính trị – xã hội của Nhà nước.",
@@ -469,7 +488,8 @@ var CH = [
     "<b>Nghĩa rộng (quốc gia – dân tộc):</b> chung lãnh thổ; chung <b>phương thức sinh hoạt kinh tế</b> (đặc trưng quan trọng nhất); chung ngôn ngữ (quốc ngữ); chung văn hóa, tâm lý; chung nhà nước, pháp luật.",
     "<b>Nghĩa hẹp (tộc người):</b> cộng đồng về ngôn ngữ, văn hóa và <b>ý thức tự giác tộc người</b> (tiêu chí quan trọng nhất để phân định tộc người).",
     "<b>Hai xu hướng khách quan</b> (Lênin): các cộng đồng dân cư muốn <b>tách ra</b> để hình thành dân tộc độc lập (nổi bật ở giai đoạn đầu CNTB); các dân tộc muốn <b>liên hiệp lại</b> (nổi bật ở giai đoạn đế quốc chủ nghĩa).",
-    "<b>Cương lĩnh dân tộc của Lênin:</b> các dân tộc hoàn toàn bình đẳng; các dân tộc được quyền tự quyết; liên hiệp công nhân tất cả các dân tộc."],
+    "<b>Cương lĩnh dân tộc của Lênin:</b> các dân tộc hoàn toàn bình đẳng; các dân tộc được quyền tự quyết; liên hiệp công nhân tất cả các dân tộc.",
+    "<b>Quyền tự quyết</b> là quyền làm chủ của mỗi dân tộc, tự quyết định chế độ chính trị và con đường phát triển của mình. Không ủng hộ các mưu toan lợi dụng chiêu bài “tự quyết” để chia rẽ, can thiệp vào công việc nội bộ của nước khác."],
     tip:"Quốc gia – dân tộc: đặc trưng quan trọng nhất là phương thức sinh hoạt kinh tế chung. Tộc người: quan trọng nhất là ý thức tự giác tộc người."},
    {h:"Dân tộc ở Việt Nam", p:[
     "<b>54 dân tộc</b>; dân tộc Kinh chiếm khoảng 85,3%, 53 dân tộc thiểu số khoảng 14,7% (Tổng điều tra 2019).",
@@ -480,7 +500,8 @@ var CH = [
     "<b>Bản chất:</b> một hình thái ý thức xã hội phản ánh <b>hư ảo</b> hiện thực khách quan.",
     "Ăngghen (Chống Đuyrinh): tôn giáo là sự phản ánh hư ảo vào đầu óc con người những lực lượng bên ngoài chi phối cuộc sống hằng ngày của họ.",
     "Mác (Góp phần phê phán triết học pháp quyền của Hêghen – Lời nói đầu): tôn giáo là “tiếng thở dài của chúng sinh bị áp bức”, là “thuốc phiện của nhân dân”.",
-    "<b>Nguồn gốc:</b> kinh tế – xã hội, nhận thức, tâm lý. <b>Tính chất:</b> lịch sử, quần chúng, chính trị.",
+    "<b>Nguồn gốc:</b> <b>kinh tế – xã hội</b> (lực lượng sản xuất kém phát triển, con người bất lực trước tự nhiên; áp bức, bóc lột, bất công); <b>nhận thức</b> (trình độ nhận thức còn hạn chế, những điều khoa học chưa giải thích được); <b>tâm lý</b> (sợ hãi, lo âu, mong muốn bình an, lòng biết ơn).",
+    "<b>Tính chất:</b> <b>lịch sử</b> (ra đời, biến đổi, sẽ mất đi khi điều kiện sinh ra nó mất đi); <b>quần chúng</b> (đông đảo tín đồ, phản ánh khát vọng của người lao động); <b>chính trị</b> (xuất hiện khi xã hội phân chia giai cấp, bị giai cấp thống trị lợi dụng).",
     "<b>Nguyên tắc giải quyết vấn đề tôn giáo:</b> tôn trọng, bảo đảm quyền tự do tín ngưỡng và không tín ngưỡng; khắc phục dần ảnh hưởng tiêu cực gắn với cải tạo xã hội cũ, xây dựng xã hội mới; phân biệt hai mặt chính trị và tư tưởng; có quan điểm lịch sử cụ thể."],
     tip:"Mặt tư tưởng (niềm tin khác nhau) là mâu thuẫn không đối kháng. Mặt chính trị (lợi dụng tôn giáo chống phá) là mâu thuẫn đối kháng."},
    {h:"Tôn giáo ở Việt Nam", p:[
@@ -526,22 +547,24 @@ var CH = [
    {h:"Khái niệm và vị trí", p:[
     "<b>Gia đình:</b> một hình thức cộng đồng xã hội đặc biệt, được hình thành, duy trì và củng cố chủ yếu dựa trên cơ sở <b>hôn nhân</b>, <b>quan hệ huyết thống</b> và <b>quan hệ nuôi dưỡng</b>, cùng những quy định về quyền và nghĩa vụ của các thành viên.",
     "Hai mối quan hệ cơ bản: <b>hôn nhân</b> (vợ – chồng) và <b>huyết thống</b> (cha mẹ – con cái, anh chị em).",
-    "<b>Vị trí:</b> gia đình là <b>tế bào của xã hội</b>; là tổ ấm mang lại hạnh phúc cho mỗi người; là <b>cầu nối giữa cá nhân và xã hội</b>."]},
+    "<b>Vị trí:</b> gia đình là <b>tế bào của xã hội</b> (gia đình góp phần tạo nên xã hội; gia đình tốt thì xã hội mới tốt, xã hội tốt thì gia đình càng tốt); là tổ ấm mang lại hạnh phúc cho mỗi người; là <b>cầu nối giữa cá nhân và xã hội</b>."]},
    {h:"Chức năng cơ bản", p:[
-    "<b>Tái sản xuất ra con người</b> (chức năng đặc thù, không cộng đồng nào thay thế được).",
-    "<b>Nuôi dưỡng, giáo dục</b> (ý nghĩa lâu dài, rất quan trọng).",
+    "<b>Tái sản xuất ra con người</b> (chức năng đặc thù, không cộng đồng nào thay thế được): duy trì nòi giống, cung cấp sức lao động cho xã hội.",
+    "<b>Nuôi dưỡng, giáo dục</b> (ý nghĩa lâu dài và hết sức quan trọng đối với sự hình thành nhân cách; gia đình là môi trường giáo dục đầu tiên).",
     "<b>Kinh tế và tổ chức tiêu dùng.</b>",
-    "<b>Thỏa mãn nhu cầu tâm sinh lý, duy trì tình cảm gia đình.</b>",
+    "<b>Thỏa mãn nhu cầu tâm sinh lý, duy trì tình cảm gia đình</b> (chức năng cơ bản, thường xuyên).",
     "Ngoài ra còn chức năng văn hóa, chính trị."]},
    {h:"Cơ sở xây dựng gia đình trong thời kỳ quá độ", p:[
     "<b>Kinh tế – xã hội:</b> phát triển lực lượng sản xuất, quan hệ sản xuất mới; cốt lõi là xóa bỏ chế độ tư hữu về tư liệu sản xuất, nguồn gốc của áp bức, bóc lột và bất bình đẳng (kể cả bất bình đẳng nam – nữ).",
     "<b>Chính trị – xã hội:</b> thiết lập nhà nước của GCCN và nhân dân lao động; hệ thống pháp luật (Luật Hôn nhân và gia đình…).",
     "<b>Văn hóa:</b> hệ giá trị mới, xóa bỏ hủ tục.",
-    "<b>Chế độ hôn nhân tiến bộ:</b> hôn nhân <b>tự nguyện</b> (bao gồm cả quyền tự do ly hôn); hôn nhân <b>một vợ một chồng, vợ chồng bình đẳng</b>; hôn nhân được <b>bảo đảm về pháp lý</b>.",
+    "<b>Chế độ hôn nhân tiến bộ:</b> hôn nhân <b>tự nguyện</b> (bao gồm cả quyền tự do ly hôn); hôn nhân <b>một vợ một chồng, vợ chồng bình đẳng</b> (thực hiện sự giải phóng đối với phụ nữ); hôn nhân được <b>bảo đảm về pháp lý</b> (đăng ký kết hôn).",
     "Tác phẩm của Ăngghen: “Nguồn gốc của gia đình, của chế độ tư hữu và của nhà nước” (1884)."]},
    {h:"Gia đình Việt Nam hiện nay", p:[
     "<b>Biến đổi quy mô, kết cấu:</b> gia đình hạt nhân (hai thế hệ) trở nên phổ biến, thay cho gia đình truyền thống nhiều thế hệ.",
-    "Biến đổi các chức năng (tái sản xuất, kinh tế, giáo dục, tình cảm) và các mối quan hệ (vợ chồng, cha mẹ – con cái, giữa các thế hệ).",
+    "<b>Biến đổi chức năng tái sản xuất:</b> mức sinh giảm, gia đình ít con; nhu cầu phải có con trai giảm.",
+    "<b>Biến đổi chức năng kinh tế:</b> từ kinh tế tự cấp, tự túc sang kinh tế hàng hóa; từ đơn vị kinh tế khép kín sang đơn vị tiêu dùng gắn với thị trường.",
+    "<b>Biến đổi chức năng giáo dục và tình cảm:</b> giáo dục gia đình gắn với giáo dục xã hội nhiều hơn; nhu cầu tình cảm, hạnh phúc được coi trọng hơn. Các quan hệ vợ chồng, cha mẹ – con cái cũng bình đẳng, dân chủ hơn.",
     "Luật Hôn nhân và gia đình 2014: tuổi kết hôn <b>nam từ đủ 20</b>, <b>nữ từ đủ 18</b>; Nhà nước không thừa nhận hôn nhân giữa những người cùng giới tính.",
     "Ngày Gia đình Việt Nam: <b>28/6</b>.",
     "<b>Phương hướng:</b> tăng cường sự lãnh đạo của Đảng, quản lý của Nhà nước; đẩy mạnh phát triển kinh tế – xã hội, nâng cao đời sống, kinh tế hộ gia đình; kế thừa giá trị gia đình truyền thống đồng thời tiếp thu tiến bộ của nhân loại; phát triển phong trào xây dựng gia đình văn hóa."],
@@ -577,13 +600,152 @@ var CH = [
   ]}
 ];
 
+/* Câu hỏi bổ sung, gộp vào từng chương */
+var EXTRA = {
+c1:[
+ ["Theo nghĩa rộng, chủ nghĩa xã hội khoa học là:",["Một bộ phận của triết học Mác","Chủ nghĩa Mác – Lênin, luận giải về sự chuyển biến tất yếu từ CNTB lên CNXH và CNCS","Học thuyết kinh tế về giá trị thặng dư","Lý luận về đảng cộng sản"],1,"Nghĩa rộng là toàn bộ chủ nghĩa Mác – Lênin, xét từ góc độ triết học, kinh tế chính trị và chính trị – xã hội."],
+ ["Ba bộ phận hợp thành chủ nghĩa Mác – Lênin là:",["Triết học, kinh tế chính trị, chủ nghĩa xã hội khoa học","Triết học, lịch sử Đảng, tư tưởng Hồ Chí Minh","Kinh tế chính trị, luật học, xã hội học","Triết học, chính trị học, đạo đức học"],0,"CNXHKH theo nghĩa hẹp là một trong ba bộ phận này."],
+ ["Cuộc cách mạng công nghiệp cuối thế kỷ XVIII – đầu XIX đã làm xuất hiện hai giai cấp cơ bản, đối lập nhau là:",["Địa chủ và nông dân","Tư sản và vô sản (công nhân)","Chủ nô và nô lệ","Quý tộc và thị dân"],1,"Đây là điều kiện kinh tế – xã hội cho sự ra đời của CNXHKH."],
+ ["Mác và Ăngghen kế thừa từ triết học của Hêghen yếu tố nào?",["Chủ nghĩa duy tâm","Hạt nhân hợp lý là phép biện chứng","Chủ nghĩa duy vật siêu hình","Học thuyết giá trị"],1,"Kế thừa phép biện chứng (hạt nhân hợp lý) của Hêghen và chủ nghĩa duy vật của Phoiơbắc, khắc phục chủ nghĩa duy tâm và tính siêu hình."],
+ ["Đại biểu của kinh tế chính trị cổ điển Anh, một tiền đề lý luận của CNXHKH, là:",["Hêghen và Phoiơbắc","A. Xmít và Đ. Ricácđô","Xanh Ximông và Phuriê","Đác-uyn và Lômônôxốp"],1,"Kinh tế chính trị cổ điển Anh: A. Xmít, Đ. Ricácđô."],
+ ["Phát kiến nào luận chứng về mặt kinh tế sự diệt vong không tránh khỏi của CNTB?",["Chủ nghĩa duy vật lịch sử","Học thuyết giá trị thặng dư","Học thuyết sứ mệnh lịch sử của GCCN","Học thuyết tiến hóa"],1,"Học thuyết giá trị thặng dư vạch rõ bản chất bóc lột của CNTB."],
+ ["Phát kiến nào luận chứng về mặt triết học rằng sự sụp đổ của CNTB và thắng lợi của CNXH đều tất yếu như nhau?",["Chủ nghĩa duy vật lịch sử","Học thuyết giá trị thặng dư","Học thuyết sứ mệnh lịch sử của GCCN","Học thuyết tế bào"],0,"Chủ nghĩa duy vật lịch sử."],
+ ["Phát kiến nào khắc phục triệt để hạn chế của CNXH không tưởng khi chỉ ra lực lượng xã hội thực hiện sự chuyển biến lên CNXH?",["Học thuyết giá trị thặng dư","Chủ nghĩa duy vật lịch sử","Học thuyết về sứ mệnh lịch sử toàn thế giới của giai cấp công nhân","Định luật bảo toàn năng lượng"],2,"CNXH không tưởng không phát hiện ra GCCN là lực lượng tiên phong; phát kiến thứ ba khắc phục điều đó."],
+ ["Đâu là một giá trị của chủ nghĩa xã hội không tưởng phê phán?",["Phát hiện ra quy luật vận động của xã hội loài người","Thể hiện tinh thần phê phán, lên án chế độ quân chủ chuyên chế và TBCN","Chỉ ra con đường cách mạng bạo lực","Phát hiện ra học thuyết giá trị thặng dư"],1,"Các giá trị: tinh thần phê phán; luận điểm có giá trị về xã hội tương lai; thức tỉnh GCCN."],
+ ["Các nhà CNXH không tưởng chủ yếu muốn cải tạo xã hội bằng cách nào?",["Cách mạng bạo lực","Thuyết phục, nêu gương, cải lương","Đấu tranh nghị trường","Khởi nghĩa vũ trang"],1,"Đây là hạn chế: không chỉ ra được biện pháp cải tạo xã hội đúng đắn."],
+ ["Tác phẩm “Phê phán Cương lĩnh Gôta” của Mác ra đời năm nào?",["1848","1867","1875","1895"],2,"Năm 1875, thuộc giai đoạn 1871–1895."],
+ ["“Chống Đuyrinh” (1878) là tác phẩm của:",["C. Mác","Ph. Ăngghen","V.I. Lênin","Hêghen"],1,"Ph. Ăngghen."],
+ ["Ph. Ăngghen mất năm nào, khép lại giai đoạn phát triển CNXHKH do Mác và Ăngghen thực hiện?",["1883","1895","1917","1924"],1,"Ăngghen mất năm 1895 (Mác mất năm 1883)."],
+ ["Tập 1 bộ “Tư bản” của Mác được xuất bản năm nào?",["1848","1859","1867","1871"],2,"Năm 1867, thuộc giai đoạn 1848–1871."],
+ ["Phương pháp nghiên cứu nào dùng để thấy rõ tiến trình phát triển lịch sử và rút ra những quy luật, tính quy luật?",["Phương pháp kết hợp lịch sử – lôgíc","Phương pháp thống kê","Phương pháp thực nghiệm","Phương pháp mô hình hóa"],0,"Kết hợp lịch sử – lôgíc là phương pháp cụ thể quan trọng của CNXHKH."],
+ ["Ý nghĩa của việc nghiên cứu CNXHKH là:",["Chỉ để thi lấy điểm","Trang bị nhận thức chính trị – xã hội, phương pháp luận khoa học; củng cố niềm tin vào mục tiêu, lý tưởng XHCN","Thay thế việc học triết học","Đào tạo chuyên gia kinh tế"],1,"Đồng thời giúp đấu tranh chống các quan điểm sai trái, thù địch."]
+],
+c2:[
+ ["Trong chế độ TBCN, về phương diện chính trị – xã hội, giai cấp công nhân là những người:",["Sở hữu tư liệu sản xuất chủ yếu","Không có tư liệu sản xuất, phải bán sức lao động cho nhà tư bản và bị bóc lột giá trị thặng dư","Sống bằng địa tô","Làm chủ nhà nước"],1,"Đây là phương diện chính trị – xã hội của khái niệm GCCN."],
+ ["Theo Tuyên ngôn, bước thứ nhất trong cuộc cách mạng công nhân là:",["Xóa bỏ ngay nhà nước","Giai cấp vô sản biến thành giai cấp thống trị, giành lấy dân chủ","Quốc hữu hóa toàn bộ ruộng đất","Thành lập Quốc tế cộng sản"],1,"“Giai cấp vô sản biến thành giai cấp thống trị, là giành lấy dân chủ”."],
+ ["Địa vị kinh tế của giai cấp công nhân là:",["Đại biểu cho lực lượng sản xuất tiên tiến, sản phẩm của nền đại công nghiệp","Người tiêu dùng chủ yếu","Lực lượng sản xuất thủ công","Người sở hữu vốn"],0,"Địa vị kinh tế là một điều kiện khách quan quy định sứ mệnh."],
+ ["Vì sao giai cấp công nhân có tinh thần cách mạng triệt để?",["Vì đông về số lượng","Vì lợi ích cơ bản đối lập trực tiếp với giai cấp tư sản, không gắn với chế độ tư hữu","Vì có trình độ học vấn cao","Vì được nhà nước tư sản ưu đãi"],1,"Đây là địa vị chính trị – xã hội của GCCN."],
+ ["Đâu KHÔNG phải điều kiện chủ quan để GCCN thực hiện sứ mệnh lịch sử?",["Sự phát triển của bản thân GCCN về số lượng và chất lượng","Đảng Cộng sản","Liên minh giai cấp","Địa vị kinh tế của giai cấp công nhân"],3,"Địa vị kinh tế là điều kiện khách quan."],
+ ["Ý thức tổ chức kỷ luật, tinh thần hợp tác của giai cấp công nhân được hình thành từ:",["Nền sản xuất đại công nghiệp","Nền sản xuất nhỏ","Truyền thống gia đình","Giáo dục tôn giáo"],0,"Lao động tập trung, dây chuyền công nghiệp rèn luyện tính tổ chức, kỷ luật."],
+ ["Khẩu hiệu “Vô sản tất cả các nước, đoàn kết lại!” thể hiện đặc điểm nào của giai cấp công nhân?",["Tinh thần quốc tế","Tính dân tộc hẹp hòi","Tính tự phát","Tính bảo thủ"],0,"GCCN có lợi ích thống nhất trên phạm vi quốc tế."],
+ ["Giai cấp công nhân Việt Nam xuất thân chủ yếu từ:",["Giai cấp địa chủ","Giai cấp nông dân","Tầng lớp tiểu tư sản thành thị","Giai cấp tư sản"],1,"Nên GCCN Việt Nam gắn bó tự nhiên với nông dân."],
+ ["Giai cấp công nhân Việt Nam sớm có Đảng lãnh đạo từ năm nào?",["1925","1930","1945","1951"],1,"Đảng Cộng sản Việt Nam thành lập ngày 3/2/1930."],
+ ["Đặc điểm nổi bật của giai cấp công nhân Việt Nam là:",["Ra đời sau giai cấp tư sản Việt Nam","Giàu truyền thống yêu nước, gắn bó mật thiết với nông dân và trí thức","Không có Đảng lãnh đạo","Xuất thân chủ yếu từ tư sản"],1,"GCCN Việt Nam ra đời trước giai cấp tư sản, sớm có Đảng lãnh đạo, giàu truyền thống yêu nước."],
+ ["Nội dung chính trị trong sứ mệnh của giai cấp công nhân Việt Nam hiện nay là:",["Giữ vững vai trò lãnh đạo và bản chất giai cấp công nhân của Đảng","Thành lập đảng đối lập","Chỉ tập trung vào sản xuất","Xóa bỏ nhà nước"],0,"Đồng thời tham gia xây dựng Nhà nước pháp quyền XHCN, bảo vệ chế độ."],
+ ["Nội dung văn hóa – tư tưởng trong sứ mệnh của GCCN Việt Nam hiện nay là:",["Xây dựng nền văn hóa tiên tiến, đậm đà bản sắc dân tộc","Du nhập toàn bộ văn hóa nước ngoài","Bảo tồn mọi phong tục cũ","Xóa bỏ tín ngưỡng dân gian"],0,"Đồng thời đấu tranh chống tư tưởng sai trái, giữ vững nền tảng tư tưởng của Đảng."],
+ ["Xu hướng biến đổi nổi bật của giai cấp công nhân hiện nay là:",["Giảm vai trò trong sản xuất","Trí thức hóa, xuất hiện “công nhân tri thức”","Quay về lao động thủ công","Chuyển hết sang giai cấp tư sản"],1,"Sứ mệnh lịch sử của GCCN không thay đổi."],
+ ["Theo chủ nghĩa Mác – Lênin, sứ mệnh lịch sử của giai cấp công nhân do yếu tố nào quy định?",["Ý muốn chủ quan của Đảng","Điều kiện khách quan: địa vị kinh tế và địa vị chính trị – xã hội","Sự giúp đỡ của giai cấp tư sản","Truyền thống văn hóa"],1,"Sứ mệnh do khách quan quy định, không phải do ai áp đặt."],
+ ["Đảng Cộng sản là:",["Đội tiên phong của giai cấp công nhân","Tổ chức của giai cấp tư sản","Tổ chức tôn giáo","Hiệp hội nghề nghiệp"],0,"ĐCS là đội tiên phong, bộ tham mưu của GCCN, nhân tố chủ quan quan trọng nhất."]
+],
+c3:[
+ ["Lênin ví thời kỳ quá độ lên CNXH là:",["Những cơn đau đẻ kéo dài","Bước nhảy vọt tức thời","Thời kỳ hòa bình tuyệt đối","Thời kỳ không có mâu thuẫn"],0,"Thời kỳ quá độ là quá trình lâu dài, khó khăn, phức tạp."],
+ ["Theo Lênin, hình thái kinh tế – xã hội cộng sản chủ nghĩa gồm:",["Thời kỳ quá độ, CNXH và CNCS","Chỉ có CNXH và CNCS","Chỉ có giai đoạn cao","Bốn giai đoạn"],0,"Lênin bổ sung thời kỳ quá độ vào cách phân kỳ của Mác."],
+ ["Điều kiện chính trị – xã hội cho sự ra đời của CNXH là:",["GCCN trở thành lực lượng chính trị độc lập, tiến hành cách mạng vô sản","Giai cấp tư sản tự nguyện trao quyền","Nhà nước phong kiến cải cách","Chiến tranh giữa các nước tư bản"],0,"Mâu thuẫn GCCN và giai cấp tư sản dẫn đến cách mạng vô sản."],
+ ["Ở nước Nga, Lênin chỉ ra thời kỳ quá độ có bao nhiêu thành phần kinh tế?",["3","4","5","6"],2,"Kinh tế gia trưởng, sản xuất hàng hóa nhỏ, tư bản tư nhân, tư bản nhà nước, kinh tế XHCN."],
+ ["Về xã hội, thời kỳ quá độ lên CNXH có đặc điểm:",["Chỉ còn một giai cấp","Còn nhiều giai cấp, tầng lớp và sự khác biệt giữa các giai cấp, tầng lớp","Không còn khác biệt thành thị – nông thôn","Không còn đấu tranh giai cấp"],1,"Tồn tại nhiều giai cấp, tầng lớp; còn khác biệt thành thị – nông thôn, lao động trí óc – chân tay."],
+ ["Thực chất của thời kỳ quá độ lên CNXH là:",["Thời kỳ cải biến cách mạng sâu sắc, triệt để trên tất cả các lĩnh vực","Thời kỳ ổn định, không có thay đổi","Thời kỳ phục hồi chế độ cũ","Thời kỳ chỉ thay đổi kinh tế"],0,"Là cuộc đấu tranh giữa cái cũ và cái mới trên mọi lĩnh vực."],
+ ["Đặc trưng về văn hóa của chủ nghĩa xã hội là:",["Có nền văn hóa phát triển cao, kế thừa giá trị văn hóa dân tộc và tinh hoa văn hóa nhân loại","Xóa bỏ hoàn toàn văn hóa cũ","Chỉ phát triển văn hóa phương Tây","Chỉ giữ văn hóa truyền thống"],0,"Văn hóa là nền tảng tinh thần của xã hội."],
+ ["Nhà nước trong chủ nghĩa xã hội mang bản chất của:",["Giai cấp công nhân, đại biểu cho lợi ích, ý chí của nhân dân lao động","Giai cấp tư sản","Toàn thể nhân loại","Giai cấp địa chủ"],0,"Đây là đặc trưng về nhà nước kiểu mới."],
+ ["Việt Nam quá độ lên CNXH từ một xã hội như thế nào?",["Tư bản chủ nghĩa phát triển","Thuộc địa, nửa phong kiến, lực lượng sản xuất rất thấp","Xã hội công nghiệp hiện đại","Xã hội cộng sản nguyên thủy"],1,"Vì vậy Việt Nam quá độ gián tiếp, bỏ qua chế độ TBCN."],
+ ["Theo Cương lĩnh 2011, CNXH ở Việt Nam có nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại và:",["Chế độ tư hữu","Quan hệ sản xuất tiến bộ phù hợp","Kinh tế kế hoạch hóa tập trung","Kinh tế tự nhiên"],1,"Cương lĩnh 2011 dùng cụm “quan hệ sản xuất tiến bộ phù hợp”."],
+ ["Theo Cương lĩnh 2011, nền văn hóa của CNXH Việt Nam là:",["Tiên tiến, đậm đà bản sắc dân tộc","Hiện đại kiểu phương Tây","Thuần túy truyền thống","Đa nguyên tư tưởng"],0,"Có nền văn hóa tiên tiến, đậm đà bản sắc dân tộc."],
+ ["Theo Cương lĩnh 2011, con người trong CNXH Việt Nam:",["Có cuộc sống ấm no, tự do, hạnh phúc, có điều kiện phát triển toàn diện","Chỉ cần đủ ăn đủ mặc","Phát triển theo năng lực tự nhiên","Được phân phối theo nhu cầu"],0,"Đây là một trong 8 đặc trưng."],
+ ["Theo Cương lĩnh 2011, quan hệ giữa các dân tộc trong cộng đồng Việt Nam là:",["Bình đẳng, đoàn kết, tôn trọng và giúp nhau cùng phát triển","Dân tộc đa số lãnh đạo dân tộc thiểu số","Mỗi dân tộc tự trị","Đồng hóa về một dân tộc"],0,"Đây là một trong 8 đặc trưng."],
+ ["Phương hướng đầu tiên trong 8 phương hướng của Cương lĩnh 2011 là:",["Đẩy mạnh CNH, HĐH đất nước gắn với phát triển kinh tế tri thức, bảo vệ tài nguyên, môi trường","Xây dựng Đảng trong sạch, vững mạnh","Bảo đảm quốc phòng, an ninh","Thực hiện đường lối đối ngoại"],0,"Phương hướng cuối cùng là xây dựng Đảng trong sạch, vững mạnh."],
+ ["Theo Đại hội XIII, đến năm 2030 Việt Nam phấn đấu là:",["Nước phát triển, thu nhập cao","Nước đang phát triển có công nghiệp hiện đại, thu nhập trung bình cao","Nước công nghiệp hoàn chỉnh","Nước thu nhập thấp"],1,"Năm 2045 mới là nước phát triển, thu nhập cao."],
+ ["Bỏ qua chế độ TBCN nhưng Việt Nam vẫn cần:",["Tiếp thu, kế thừa những thành tựu nhân loại đạt được dưới CNTB, nhất là khoa học, công nghệ","Từ chối mọi thành tựu của CNTB","Xác lập quan hệ sản xuất TBCN thống trị","Đóng cửa với thế giới"],0,"Theo Đại hội IX (2001)."]
+],
+c4:[
+ ["Theo quan điểm Mác – Lênin, với tư cách là một giá trị xã hội, dân chủ là:",["Quyền lực thuộc về nhân dân, nhân dân là chủ","Quyền lực của một cá nhân","Quyền lực thuộc về giai cấp tư sản","Sự tự do tuyệt đối"],0,"Dân chủ còn là phạm trù chính trị (hình thức nhà nước) và nguyên tắc tổ chức (tập trung dân chủ)."],
+ ["Dân chủ với tư cách là một hình thức nhà nước, một chế độ chính trị là:",["Phạm trù lịch sử, sẽ tiêu vong cùng nhà nước","Phạm trù vĩnh viễn","Không liên quan đến nhà nước","Chỉ có ở CNTB"],0,"Với tư cách giá trị xã hội thì dân chủ là phạm trù vĩnh viễn."],
+ ["Dân chủ với tư cách là một nguyên tắc được thể hiện qua:",["Nguyên tắc tập trung dân chủ trong tổ chức và hoạt động","Nguyên tắc tam quyền phân lập","Nguyên tắc đa đảng","Nguyên tắc tự do tuyệt đối"],0,"Tập trung dân chủ là nguyên tắc tổ chức của Đảng và Nhà nước."],
+ ["Chế độ phong kiến được xem là:",["Không có nền dân chủ, là chế độ chuyên chế","Nền dân chủ đầu tiên","Nền dân chủ cao nhất","Nền dân chủ tư sản"],0,"Lịch sử có ba nền dân chủ: chủ nô, tư sản, XHCN."],
+ ["Bản chất của nền dân chủ tư sản là:",["Dân chủ của thiểu số giai cấp tư sản, dựa trên chế độ tư hữu về tư liệu sản xuất","Dân chủ của đa số nhân dân lao động","Dân chủ không mang tính giai cấp","Dân chủ của giai cấp công nhân"],0,"Dân chủ tư sản là bước tiến so với chuyên chế phong kiến nhưng vẫn là dân chủ của thiểu số."],
+ ["Bản chất tư tưởng – văn hóa của nền dân chủ XHCN là:",["Lấy hệ tư tưởng Mác – Lênin làm chủ đạo","Đa nguyên tư tưởng","Lấy tôn giáo làm nền tảng","Không có hệ tư tưởng chủ đạo"],0,"Đồng thời kế thừa tinh hoa văn hóa dân tộc và nhân loại."],
+ ["Căn cứ vào phạm vi tác động, chức năng của nhà nước XHCN gồm:",["Đối nội và đối ngoại","Giai cấp và xã hội","Chính trị và kinh tế","Lập pháp và tư pháp"],0,"Theo tính chất quyền lực mới chia thành chức năng giai cấp và chức năng xã hội."],
+ ["Căn cứ vào lĩnh vực tác động, chức năng của nhà nước XHCN gồm:",["Chính trị, kinh tế, văn hóa, xã hội","Đối nội, đối ngoại","Trấn áp, tổ chức","Lập pháp, hành pháp, tư pháp"],0,"Phân theo lĩnh vực của đời sống xã hội."],
+ ["Về chính trị, nhà nước XHCN mang bản chất của:",["Giai cấp công nhân","Giai cấp tư sản","Toàn dân không phân biệt giai cấp","Giai cấp nông dân"],0,"Đại biểu cho lợi ích, ý chí của nhân dân lao động."],
+ ["Ở Việt Nam, cơ quan quyền lực nhà nước cao nhất là:",["Chính phủ","Quốc hội","Tòa án nhân dân tối cao","Chủ tịch nước"],1,"Quốc hội là cơ quan đại biểu cao nhất của nhân dân."],
+ ["Theo Hiến pháp 2013, nền tảng của quyền lực nhà nước Việt Nam là:",["Liên minh giữa giai cấp công nhân với giai cấp nông dân và đội ngũ trí thức","Giai cấp công nhân","Toàn thể doanh nhân","Lực lượng vũ trang"],0,"Điều 2 Hiến pháp 2013."],
+ ["Đặc điểm nào thuộc Nhà nước pháp quyền XHCN Việt Nam?",["Hiến pháp và pháp luật giữ vị trí tối thượng trong điều chỉnh các quan hệ xã hội","Tam quyền phân lập","Đa đảng đối lập","Pháp luật chỉ áp dụng cho công dân, không áp dụng cho cơ quan nhà nước"],0,"Ngoài ra: của dân, do dân, vì dân; quyền lực thống nhất có phân công, phối hợp, kiểm soát; do ĐCS lãnh đạo."],
+ ["Phương châm “Dân biết, dân bàn, dân làm, dân kiểm tra” được nêu từ Đại hội nào?",["Đại hội IV","Đại hội VI","Đại hội IX","Đại hội XIII"],1,"Đại hội VI (1986). Đại hội XIII bổ sung “dân giám sát, dân thụ hưởng”."],
+ ["Nền dân chủ XHCN phôi thai từ thực tiễn đấu tranh nào?",["Công xã Pari 1871","Cách mạng tư sản Pháp 1789","Phong trào Hiến chương","Cách mạng Tháng Mười"],0,"Cách mạng Tháng Mười Nga 1917 mới chính thức xác lập nền dân chủ XHCN."],
+ ["Nhà nước XHCN ra đời là kết quả của:",["Cuộc cách mạng do GCCN và nhân dân lao động tiến hành dưới sự lãnh đạo của Đảng Cộng sản","Sự cải cách của nhà nước tư sản","Thỏa thuận giữa các giai cấp","Sự can thiệp từ bên ngoài"],0,"Đây là nhà nước kiểu mới."]
+],
+c5:[
+ ["Cơ cấu xã hội là:",["Những cộng đồng người cùng toàn bộ những mối quan hệ xã hội do sự tác động lẫn nhau của các cộng đồng ấy tạo nên","Tổng số dân của một quốc gia","Cơ cấu các ngành kinh tế","Hệ thống các cơ quan nhà nước"],0,"Định nghĩa trong giáo trình."],
+ ["Đâu KHÔNG phải là một loại cơ cấu xã hội?",["Cơ cấu xã hội – dân cư","Cơ cấu xã hội – nghề nghiệp","Cơ cấu xã hội – tôn giáo","Cơ cấu ngân sách nhà nước"],3,"Cơ cấu xã hội gồm: dân cư, nghề nghiệp, giai cấp, dân tộc, tôn giáo…"],
+ ["Cơ cấu xã hội – giai cấp là:",["Hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định","Danh sách các nghề trong xã hội","Phân bố dân cư theo vùng","Cơ cấu độ tuổi dân số"],0,"Thông qua quan hệ sở hữu TLSX, tổ chức quản lý sản xuất, địa vị chính trị – xã hội."],
+ ["Vì sao cơ cấu xã hội – giai cấp có vị trí quan trọng hàng đầu?",["Vì liên quan đến đảng phái, nhà nước, quan hệ sở hữu, quản lý, phân phối, chi phối các loại cơ cấu xã hội khác","Vì có số lượng người đông nhất","Vì ít biến đổi nhất","Vì chỉ liên quan đến kinh tế"],0,"Nó là căn cứ để hoạch định chính sách phát triển xã hội."],
+ ["Tính tất yếu về kinh tế của liên minh giai cấp, tầng lớp xuất phát từ:",["Nhu cầu, lợi ích kinh tế của các giai cấp; gắn công nghiệp, nông nghiệp và khoa học – công nghệ","Ý muốn chủ quan của nhà nước","Yêu cầu của nước ngoài","Truyền thống văn hóa"],0,"Ngoài ra còn tính tất yếu về chính trị."],
+ ["Nội dung kinh tế của liên minh trong thời kỳ quá độ ở Việt Nam là:",["Thỏa mãn nhu cầu, lợi ích kinh tế của các giai cấp, tầng lớp; xây dựng cơ cấu kinh tế hợp lý","Giữ vững vai trò lãnh đạo của Đảng","Xây dựng nền văn hóa tiên tiến","Bảo vệ an ninh quốc gia"],0,"Nội dung kinh tế là cơ bản nhất."],
+ ["Nội dung văn hóa – xã hội của liên minh ở Việt Nam là:",["Xây dựng nền văn hóa tiên tiến, đậm đà bản sắc dân tộc, nâng cao dân trí, xóa đói giảm nghèo","Phát triển công nghiệp nặng","Giữ vững lập trường chính trị","Mở rộng xuất khẩu"],0,"Kèm theo thực hiện tốt chính sách xã hội."],
+ ["Giai cấp nông dân Việt Nam có vị trí như thế nào?",["Vị trí chiến lược trong CNH, HĐH nông nghiệp, nông thôn","Không còn vai trò","Giai cấp lãnh đạo","Lực lượng đối lập với công nhân"],0,"Theo Nghị quyết 26-NQ/TW (2008)."],
+ ["Ai lãnh đạo khối liên minh giai cấp, tầng lớp ở Việt Nam?",["Đảng Cộng sản Việt Nam","Mặt trận Tổ quốc","Quốc hội","Tổng Liên đoàn Lao động"],0,"GCCN lãnh đạo thông qua Đảng."],
+ ["Sự biến đổi của cơ cấu xã hội – giai cấp trong thời kỳ quá độ dẫn đến:",["Từng bước xóa bỏ bất bình đẳng xã hội, các giai cấp, tầng lớp xích lại gần nhau","Phân hóa giàu nghèo tuyệt đối","Xóa bỏ ngay mọi giai cấp","Giai cấp tư sản lãnh đạo"],0,"Đây là tính quy luật thứ ba."],
+ ["Vì sao cơ cấu xã hội – giai cấp thời kỳ quá độ phức tạp, đa dạng?",["Vì tồn tại nền kinh tế nhiều thành phần","Vì chỉ còn một thành phần kinh tế","Vì không còn giai cấp","Vì dân số giảm"],0,"Cơ cấu kinh tế quy định cơ cấu xã hội – giai cấp."],
+ ["Trong liên minh, giai cấp nào giữ vai trò lãnh đạo?",["Giai cấp công nhân","Giai cấp nông dân","Đội ngũ trí thức","Đội ngũ doanh nhân"],0,"Vì GCCN đại biểu cho lực lượng sản xuất tiên tiến."],
+ ["Phương hướng tăng cường liên minh ở Việt Nam bao gồm:",["Đẩy mạnh CNH, HĐH; tạo sự đồng thuận; hoàn thiện thể chế kinh tế thị trường định hướng XHCN","Hạn chế phát triển công nghiệp","Xóa bỏ kinh tế tư nhân","Giảm vai trò của Mặt trận Tổ quốc"],0,"Cùng với đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc."],
+ ["Ngoài công nhân, nông dân, trí thức, cơ cấu xã hội – giai cấp ở Việt Nam còn có:",["Đội ngũ doanh nhân, phụ nữ, thanh niên…","Giai cấp địa chủ","Giai cấp chủ nô","Tầng lớp quý tộc"],0,"Đội ngũ doanh nhân phát triển nhanh trong thời kỳ đổi mới."]
+],
+c6:[
+ ["Theo nghĩa hẹp, dân tộc (tộc người) có những đặc trưng cơ bản nào?",["Cộng đồng về ngôn ngữ, văn hóa và ý thức tự giác tộc người","Lãnh thổ, kinh tế, nhà nước","Tôn giáo, chính trị, pháp luật","Dân số, diện tích, tài nguyên"],0,"Ba đặc trưng; ý thức tự giác tộc người là quan trọng nhất."],
+ ["Theo nghĩa rộng, dân tộc (quốc gia – dân tộc) có đặc trưng nào?",["Có chung lãnh thổ, phương thức sinh hoạt kinh tế, ngôn ngữ, văn hóa – tâm lý, nhà nước và pháp luật thống nhất","Chỉ chung ngôn ngữ","Chỉ chung tôn giáo","Chỉ chung huyết thống"],0,"Đặc trưng quan trọng nhất là chung phương thức sinh hoạt kinh tế."],
+ ["Xu hướng thứ nhất của sự phát triển dân tộc (tách ra thành dân tộc độc lập) biểu hiện nổi bật trong giai đoạn nào?",["Giai đoạn đầu của CNTB","Giai đoạn chủ nghĩa đế quốc","Thời kỳ phong kiến","Thời kỳ CNXH"],0,"Gắn với phong trào đấu tranh chống áp bức dân tộc, thành lập quốc gia độc lập."],
+ ["Quyền tự quyết dân tộc là:",["Quyền làm chủ của mỗi dân tộc, tự quyết định chế độ chính trị và con đường phát triển của mình","Quyền của mọi nhóm người tách ra lập nước bất kỳ lúc nào","Quyền can thiệp vào nội bộ nước khác","Quyền của dân tộc đa số"],0,"Không ủng hộ lợi dụng chiêu bài “tự quyết” để chia rẽ, can thiệp nội bộ nước khác."],
+ ["Theo Tổng điều tra năm 2019, dân tộc Kinh chiếm khoảng bao nhiêu phần trăm dân số Việt Nam?",["53,9%","75,5%","85,3%","95,1%"],2,"53 dân tộc thiểu số chiếm khoảng 14,7%."],
+ ["Các dân tộc thiểu số ở Việt Nam phân bố chủ yếu ở:",["Địa bàn có vị trí chiến lược quan trọng (biên giới, miền núi)","Các thành phố lớn","Đồng bằng ven biển","Hải đảo xa"],0,"Đây là một đặc điểm dân tộc Việt Nam, liên quan đến quốc phòng, an ninh."],
+ ["Đặc điểm về trình độ phát triển của các dân tộc ở Việt Nam là:",["Không đều nhau","Hoàn toàn như nhau","Dân tộc thiểu số phát triển hơn","Không xác định"],0,"Vì vậy cần chính sách hỗ trợ dân tộc thiểu số."],
+ ["Nền văn hóa Việt Nam được tạo nên bởi các dân tộc với đặc điểm:",["Thống nhất trong đa dạng","Đồng nhất tuyệt đối","Tách biệt từng dân tộc","Chỉ có văn hóa Kinh"],0,"Mỗi dân tộc có bản sắc riêng, cùng tạo nên văn hóa Việt Nam."],
+ ["Nghị quyết 24-NQ/TW (Hội nghị TW 7 khóa IX, 2003) bàn về:",["Công tác dân tộc","Công tác tôn giáo","Giai cấp công nhân","Nông nghiệp, nông dân, nông thôn"],0,"Nghị quyết 25-NQ/TW cùng hội nghị bàn về công tác tôn giáo."],
+ ["Câu “tôn giáo chẳng qua chỉ là sự phản ánh hư ảo vào trong đầu óc của con người những lực lượng ở bên ngoài chi phối cuộc sống hằng ngày của họ” là của ai, trong tác phẩm nào?",["Ăngghen, Chống Đuyrinh","Mác, Tư bản","Lênin, Nhà nước và cách mạng","Mác, Tuyên ngôn"],0,"Ph. Ăngghen, “Chống Đuyrinh”."],
+ ["Nguồn gốc nhận thức của tôn giáo là:",["Trình độ nhận thức còn hạn chế, những điều khoa học chưa giải thích được","Áp bức, bóc lột","Sự sợ hãi, lo âu","Sự phát triển của khoa học"],0,"Áp bức, bóc lột thuộc nguồn gốc kinh tế – xã hội; sợ hãi thuộc nguồn gốc tâm lý."],
+ ["Sự sợ hãi, lo âu, mong muốn bình an của con người thuộc nguồn gốc nào của tôn giáo?",["Nguồn gốc tâm lý","Nguồn gốc nhận thức","Nguồn gốc kinh tế – xã hội","Nguồn gốc chính trị"],0,"Nguồn gốc tâm lý."],
+ ["Tính chính trị của tôn giáo xuất hiện khi:",["Xã hội phân chia giai cấp, tôn giáo bị giai cấp thống trị lợi dụng","Con người mới xuất hiện","Khoa học phát triển","Xã hội không còn giai cấp"],0,"Tôn giáo còn có tính lịch sử và tính quần chúng."],
+ ["Tính lịch sử của tôn giáo thể hiện ở chỗ:",["Tôn giáo ra đời, biến đổi và sẽ mất đi khi điều kiện sinh ra nó mất đi","Tôn giáo tồn tại vĩnh viễn, không thay đổi","Tôn giáo chỉ có ở thời cổ đại","Tôn giáo không chịu tác động của xã hội"],0,"Tôn giáo là phạm trù lịch sử."],
+ ["Mâu thuẫn ở mặt chính trị của tôn giáo (lợi dụng tôn giáo chống phá) thuộc loại:",["Mâu thuẫn đối kháng","Mâu thuẫn không đối kháng","Không phải mâu thuẫn","Mâu thuẫn nội bộ tín đồ"],0,"Mặt tư tưởng (khác biệt niềm tin) là mâu thuẫn không đối kháng."],
+ ["Theo quan điểm của Đảng, công tác tôn giáo là trách nhiệm của:",["Cả hệ thống chính trị","Riêng các tổ chức tôn giáo","Riêng ngành công an","Riêng Mặt trận Tổ quốc"],0,"Theo Nghị quyết 25-NQ/TW (2003)."]
+],
+c7:[
+ ["Chức năng nuôi dưỡng, giáo dục của gia đình có ý nghĩa:",["Lâu dài và hết sức quan trọng đối với sự hình thành nhân cách","Không quan trọng","Chỉ là chức năng phụ","Chỉ có ý nghĩa kinh tế"],0,"Gia đình là môi trường giáo dục đầu tiên của mỗi người."],
+ ["Chức năng tái sản xuất ra con người đáp ứng nhu cầu gì?",["Duy trì nòi giống, cung cấp sức lao động cho xã hội","Tổ chức tiêu dùng","Thỏa mãn nhu cầu tâm lý","Giáo dục con cái"],0,"Đây là chức năng đặc thù của gia đình."],
+ ["Chức năng thỏa mãn nhu cầu tâm sinh lý, duy trì tình cảm gia đình là chức năng:",["Cơ bản, thường xuyên của gia đình","Không có trong gia đình","Chỉ có ở gia đình truyền thống","Do nhà nước đảm nhận"],0,"Một trong bốn chức năng cơ bản."],
+ ["Hôn nhân một vợ một chồng có ý nghĩa:",["Thực hiện sự giải phóng đối với phụ nữ","Hạn chế quyền tự do","Chỉ phù hợp với phương Tây","Không có ý nghĩa xã hội"],0,"Gắn với bình đẳng vợ chồng."],
+ ["Hôn nhân được bảo đảm về pháp lý thể hiện qua:",["Việc đăng ký kết hôn theo quy định của pháp luật","Lễ cưới truyền thống","Sự đồng ý của dòng họ","Thỏa thuận miệng"],0,"Pháp luật bảo vệ quyền, nghĩa vụ của vợ chồng."],
+ ["Gia đình hạt nhân là gia đình gồm:",["Hai thế hệ (cha mẹ và con cái)","Ba, bốn thế hệ cùng sống chung","Nhiều cặp vợ chồng","Chỉ một người"],0,"Đây là kiểu gia đình phổ biến hiện nay ở Việt Nam."],
+ ["Biến đổi chức năng kinh tế của gia đình Việt Nam hiện nay là:",["Từ kinh tế tự cấp, tự túc sang kinh tế hàng hóa; từ đơn vị khép kín sang đơn vị tiêu dùng gắn với thị trường","Quay về kinh tế tự cấp, tự túc","Gia đình không còn chức năng kinh tế","Kinh tế gia đình do nhà nước quản lý"],0,"Gắn với phát triển kinh tế thị trường."],
+ ["Biến đổi chức năng tái sản xuất con người ở gia đình Việt Nam hiện nay là:",["Mức sinh giảm, gia đình ít con, nhu cầu phải có con trai giảm","Mức sinh tăng mạnh","Gia đình đông con hơn","Không thay đổi"],0,"Do tác động của kinh tế, y học và chính sách dân số."],
+ ["Ý nghĩa của câu “gia đình là tế bào của xã hội” là:",["Gia đình góp phần tạo nên xã hội; gia đình tốt thì xã hội mới tốt và ngược lại","Gia đình tách biệt với xã hội","Xã hội không ảnh hưởng đến gia đình","Gia đình là đơn vị hành chính"],0,"Gia đình là tế bào, xã hội là cơ thể."],
+ ["Cơ sở văn hóa để xây dựng gia đình trong thời kỳ quá độ là:",["Hình thành hệ giá trị văn hóa mới, xóa bỏ hủ tục lạc hậu","Giữ nguyên mọi phong tục cũ","Tiếp thu toàn bộ văn hóa nước ngoài","Xóa bỏ văn hóa truyền thống"],0,"Kế thừa giá trị tốt đẹp, loại bỏ hủ tục."],
+ ["Theo Luật Hôn nhân và gia đình 2014, hôn nhân giữa những người cùng giới tính:",["Không được Nhà nước thừa nhận","Được thừa nhận đầy đủ","Bị xử phạt hình sự","Được thừa nhận ở một số địa phương"],0,"Luật 2014 bỏ quy định cấm nhưng Nhà nước không thừa nhận."],
+ ["Xóa bỏ chế độ tư hữu về tư liệu sản xuất tạo cơ sở cho:",["Bình đẳng nam – nữ, xóa bỏ áp bức trong gia đình","Phân hóa giàu nghèo","Gia trưởng trong gia đình","Hôn nhân sắp đặt"],0,"Đây là cơ sở kinh tế – xã hội để xây dựng gia đình."],
+ ["Phong trào nào là phương hướng xây dựng gia đình Việt Nam?",["Phong trào xây dựng gia đình văn hóa","Phong trào đông con","Phong trào gia đình nhiều thế hệ","Phong trào hôn nhân sắp đặt"],0,"Cùng với kế thừa giá trị truyền thống, tiếp thu tiến bộ nhân loại."],
+ ["Quan hệ cha mẹ – con cái thuộc loại quan hệ nào trong gia đình?",["Quan hệ huyết thống","Quan hệ hôn nhân","Quan hệ kinh tế","Quan hệ xã hội bên ngoài"],0,"Quan hệ vợ chồng là quan hệ hôn nhân."],
+ ["Tác phẩm “Nguồn gốc của gia đình, của chế độ tư hữu và của nhà nước” ra đời năm:",["1848","1867","1884","1895"],2,"Ph. Ăngghen viết năm 1884."]
+]
+};
+CH.forEach(function(c){ if(EXTRA[c.id]) c.qs=c.qs.concat(EXTRA[c.id]); });
+
+/* Gắn mỗi câu với mục tóm tắt chứa kiến thức (so khớp từ khóa) */
+function words(t){return String(t).replace(/<[^>]+>/g," ").toLowerCase().split(/[^0-9a-zà-ỹđ]+/i).filter(function(w){return w.length>1;});}
+var STOP={"của":1,"và":1,"là":1,"các":1,"những":1,"trong":1,"có":1,"được":1,"với":1,"cho":1,"theo":1,"một":1,"không":1,"nào":1,"đâu":1,"gì":1,"thì":1,"để":1,"từ":1,"về":1,"này":1,"đó":1,"như":1,"chỉ":1,"nhất":1};
+function bigrams(t){var w=words(t).filter(function(x){return !STOP[x];}),b={};for(var i=0;i<w.length;i++){b[w[i]]=1;if(i+1<w.length)b[w[i]+" "+w[i+1]]=2;}return b;}
+CH.forEach(function(c){
+  var secs=c.sum.map(function(s){return bigrams(s.h+" "+s.p.join(" ")+" "+(s.tip||""));});
+  c.qtag=c.qs.map(function(q){
+    var qb=bigrams(q[0]+" "+q[1][q[2]]+" "+q[3]), best=0, bs=-1;
+    secs.forEach(function(sb,i){var sc=0;for(var k in qb) if(sb[k]) sc+=qb[k];if(sc>bs){bs=sc;best=i;}});
+    return best;
+  });
+});
+
 /* ===================== LƯU TIẾN ĐỘ ===================== */
 var KEY="mln131.v1";
 var S={best:{},last:{},wrong:{},cards:{},exams:[]};
 try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); for(var k in S) if(o&&o[k]!=null) S[k]=o[k];}}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
 
-var ALL=[]; CH.forEach(function(c){c.qs.forEach(function(q,i){ALL.push({id:c.id+"-"+i,ch:c,q:q[0],o:q[1],a:q[2],e:q[3]});});});
+var ALL=[]; CH.forEach(function(c){c.qs.forEach(function(q,i){ALL.push({id:c.id+"-"+i,ch:c,q:q[0],o:q[1],a:q[2],e:q[3],sec:c.qtag[i]});});});
 var BYID={}; ALL.forEach(function(x){BYID[x.id]=x;});
 function chQs(c){return ALL.filter(function(x){return x.ch===c;});}
 function wrongList(){return Object.keys(S.wrong).filter(function(id){return BYID[id];}).map(function(id){return BYID[id];});}
@@ -706,8 +868,11 @@ function panePrac(pane,c){
   var wc=chQs(c).filter(function(x){return S.wrong[x.id];}).length;
   pane.innerHTML='<div class="setup"><div><b>Luyện tập '+c.qs.length+' câu</b><div style="color:var(--muted);font-size:14px">Chọn đáp án là biết đúng sai ngay, kèm giải thích. Phím 1–4 để chọn, Enter để sang câu.</div></div>'+
     '<div style="font-size:14px;color:var(--muted)">Lần gần nhất: <b style="color:var(--ink)">'+(last==null?"chưa làm":last+"%")+'</b> · Cao nhất: <b style="color:var(--ink)">'+(best==null?"–":best+"%")+'</b></div>'+
-    '<div class="row"><button class="btn red grow" id="start">Bắt đầu luyện tập</button>'+(wc?'<button class="btn grow" id="wr">Chỉ câu sai ('+wc+')</button>':'')+'</div></div>';
+    '<div class="row"><button class="btn red grow" id="start">Luyện cả chương</button>'+(wc?'<button class="btn grow" id="wr">Chỉ câu sai ('+wc+')</button>':'')+'</div></div>'+
+    '<div class="eyebrow" style="margin:6px 0 10px">Hoặc luyện theo từng nội dung</div><div class="seclist">'+
+    c.sum.map(function(s,i){var n=chQs(c).filter(function(x){return x.sec===i;}).length;return n?'<button class="secbtn" data-sec="'+i+'"><span>'+s.h+'</span><small>'+n+' câu</small></button>':'';}).join('')+'</div>';
   document.getElementById("start").onclick=function(){startPractice(chQs(c),"Luyện tập · Chương "+c.n,c,false,{name:"chapter",ch:c,tab:"prac"});};
+  pane.querySelectorAll(".secbtn").forEach(function(b){b.onclick=function(){var i=+b.dataset.sec;startPractice(chQs(c).filter(function(x){return x.sec===i;}),"Chương "+c.n+" · "+c.sum[i].h,null,false,{name:"chapter",ch:c,tab:"prac"});};});
   if(wc) document.getElementById("wr").onclick=function(){startPractice(chQs(c).filter(function(x){return S.wrong[x.id];}),"Câu sai · Chương "+c.n,null,true,{name:"chapter",ch:c,tab:"prac"});};
 }
 
@@ -716,6 +881,11 @@ function paneExam(pane,c){
   pane.innerHTML='<div class="setup"><div><b>Thi thử chương '+c.n+'</b><div style="color:var(--muted);font-size:14px">'+n+' câu · '+mins+' phút. Không hiện đáp án đến khi nộp bài. Hết giờ thì tự nộp.</div></div>'+
     '<button class="btn red" id="start">Bắt đầu thi thử</button></div>';
   document.getElementById("start").onclick=function(){startExam(chQs(c),mins,"Thi thử · Chương "+c.n,c,{name:"chapter",ch:c,tab:"exam"});};
+}
+
+function knowBox(x,open){
+  var s=x.ch.sum[x.sec];
+  return '<details class="know"'+(open?' open':'')+'><summary>Kiến thức: '+s.h+' (Chương '+x.ch.n+')</summary><ul>'+s.p.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>'+(s.tip?'<div class="tip">'+s.tip+'</div>':'')+'</details>';
 }
 
 /* ----- Luyện tập ----- */
@@ -746,7 +916,7 @@ function renderPractice(){
   h+='</div>';
   if(answered){
     var ok=it.pick===it.ans;
-    h+='<div class="expl'+(ok?'':' no')+'"><b>'+(ok?'Chính xác':'Chưa đúng · đáp án '+KEYS[it.ans])+'</b>'+esc(it.x.e)+'</div>';
+    h+='<div class="expl'+(ok?'':' no')+'"><b>'+(ok?'Chính xác':'Chưa đúng · đáp án '+KEYS[it.ans])+'</b>'+esc(it.x.e)+'</div>'+knowBox(it.x,!ok);
   }
   h+='</div><div class="navrow">'+(answered?'<button class="btn red grow" id="next">'+(v.i+1<v.items.length?'Câu tiếp →':'Xem kết quả')+'</button>':'')+'</div>';
   app.innerHTML=h;
@@ -822,7 +992,7 @@ function renderExam(){
       else if(pos===it.pick) cls+=" sel";
       h+='<button class="'+cls+'" data-q="'+qi+'" data-pos="'+pos+'"'+(v.done?' disabled':'')+'><span class="k">'+KEYS[pos]+'</span><span>'+esc(it.x.o[oi])+'</span></button>';
     });
-    h+='</div>'+(v.done&&it.pick!==it.ans?'<div class="expl no"><b>Đáp án '+KEYS[it.ans]+'</b>'+esc(it.x.e)+'</div>':'')+'</div>';
+    h+='</div>'+(v.done&&it.pick!==it.ans?'<div class="expl no"><b>Đáp án '+KEYS[it.ans]+'</b>'+esc(it.x.e)+'</div>'+knowBox(it.x,false):'')+'</div>';
   });
   if(!v.done){
     h+='<div class="submitbar">'+(v.confirmLeave?'<span>Thoát sẽ bỏ bài đang làm.</span><button class="btn bad" id="leave">Thoát</button><button class="btn" id="stay">Làm tiếp</button>':
